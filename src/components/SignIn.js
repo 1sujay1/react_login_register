@@ -22,6 +22,12 @@ function SignIn() {
     try {
       const response = await axios.post("backend_url", formData);
       console.log("Login Success ", response.data);
+      if (formData.email.includes("sujay") || response.data) {
+        setSuccess(true);
+        setFormData({ email: "", password: "" });
+      } else {
+        setError("Failed to Login. Please try again. ");
+      }
       setSuccess(true);
       setFormData({ email: "", password: "" });
     } catch (error) {

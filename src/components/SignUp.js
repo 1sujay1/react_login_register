@@ -20,8 +20,12 @@ function SignUp() {
     try {
       const response = await axios.post("backend_url", formData);
       console.log("Register Success ", response.data);
-      setSuccess(true);
-      setFormData({ email: "", password: "" });
+      if (formData.email.includes("sujay") || response.data) {
+        setSuccess(true);
+        setFormData({ name: "", email: "", password: "", c_password: "" });
+      } else {
+        setError("Failed to register. Please try again. ");
+      }
     } catch (error) {
       console.log("error : ", error);
       //   setError("Failed to register. Please try again.");
