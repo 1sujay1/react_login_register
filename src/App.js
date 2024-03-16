@@ -10,14 +10,16 @@ import Todo from "./components/Todo";
 import ContextProvider from "./components/ContextProvider";
 import Context from "./components/Context";
 import BiDirectional from "./components/BiDirectional";
-
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import ChildComponent1 from "./redux/ChildComponent1";
 function App() {
   return (
     <Router>
-      <ContextProvider>
+      {/* <ContextProvider> */}
+      <Provider store={store}>
         <Home />
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/timer" element={<Timer />} />
@@ -25,8 +27,10 @@ function App() {
           <Route path="/todos" element={<TodoTest />} />
           <Route path="/context" element={<Context />} />
           <Route path="/bidirec" element={<BiDirectional />} />
+          <Route path="/child1" element={<ChildComponent1 />} />
         </Routes>
-      </ContextProvider>
+      </Provider>
+      {/* </ContextProvider> */}
     </Router>
   );
 }
